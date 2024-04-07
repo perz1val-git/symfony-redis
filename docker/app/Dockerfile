@@ -8,8 +8,9 @@ RUN apt update \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip \
     && pecl install redis \
-    && docker-php-ext-enable redis.so
-
+    && docker-php-ext-enable redis.so \
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug
 WORKDIR /var/www/app
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

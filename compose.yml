@@ -16,8 +16,11 @@ services:
       context: ./docker/app
     volumes:
       - ./app:/var/www/app
+      - ./docker/app/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     depends_on:
       - redis
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     networks:
       - redis-net
       - nginx
